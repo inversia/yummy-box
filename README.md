@@ -1,8 +1,8 @@
-# funbox-test
+# yummy-box
 
-Тестовое задание для FunBox. Всё сделано на чистом голом CSS, без использования фреймворков.
+Тестовое задание. Всё сделано на чистом голом CSS, без использования фреймворков.
 
-Смотреть: https://inversia.github.io/funbox-test
+Смотреть: https://inversia.github.io/yummy-box
 
 # Примечания
 
