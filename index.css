@@ -1,185 +1,329 @@
+@font-face {
+    font-family: 'Exo2.0-Thin';
+    font-style: normal;
+    src: url(fonts/Exo2.0-Thin.otf);
+}
+
+/*  Сброс дефолтных стилей, взято из reset.css (чтобы не подключать его отдельно)  */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,main,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box; /* чтобы ширина блочных элементов включала в себя паддинги, так удобнее верстать */
 }
 
 html {
-  height:100%;
+    height: 100%;
 }
 
 body {
-  margin:0;
-  min-height:100%;
-  width:100%;
-  background-size:70px; /* 0.5× от 140px, для ретины */
-  background-image:url(https://inversia.github.io/funbox-test/art/pattern.png);
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  font-family: 'Trebuchet MS', sans-serif;
+    margin: 0;
+    min-height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Trebuchet MS', sans-serif;
+    line-height: 1;
+
+/*  multiple backgrounds   */
+    
+    background-size: 100%, 70px; /* 0.5× от 140px, для ретины */
+    background-image: linear-gradient(rgba(0,0,0,0.5), transparent, rgba(0,0,0,0.5)), url(art/pattern.png);
+    background-repeat: no-repeat, repeat;
+    background-attachment: fixed, scroll; /*  градиент не скроллится, паттерн скроллится  */
 }
 
 h1 {
-  color: white;
-  font-family: 'Exo2.0-Thin', 'Trebuchet MS', sans-serif;
-  font-size:36px;
-  text-align:center;
-  position:relative;
-  margin-bottom: 30px;
-  padding:30px 30px 0 30px;
-  line-height:1.2em;
-  width:100%;
-  user-select: none;
+    color: white;
+    font-family: 'Exo2.0-Thin', 'Trebuchet MS', sans-serif;
+    font-size:36px;
+    text-align:center;
+    position:relative;
+    margin-bottom: 30px;
+    padding:30px 30px 0 30px;
+    line-height:1.2em;
+    width:100%;
+    user-select: none;
+}
+
+strong {
+    font-weight: bold;
 }
 
 .cats {
-  text-align:center;
-  width:100%;
-  padding-bottom: 30px; /* чтобы уравновесить h1 сверху, для выравнивания блока с котами ровно по центру экрана */
+    text-align:center;
+    width:100%;
+    user-select:none;
+    padding-bottom: 25px; /* чтобы уравновесить h1 сверху, для выравнивания блока с котами ровно по центру экрана */
 }
 
-  .cats input {
-    display: none; /* скрывает чекбоксы */
-  }
-
-  .cat {
-    display:inline-block;
-    position:relative;
-    width: 320px;
-    height: 480px; 
-    margin:40px;
-    margin-bottom:80px;
-    background-color: white;
-    background-position: -30px 210px;
-    background-repeat: no-repeat;
-    background-size:368px; /* 0.5× от 736px, для ретины */
-    background-image: url(https://inversia.github.io/funbox-test/art/kotik.jpg);
-    border-radius: 9px 0 12px 12px; /* верхний левый меньше, чтобы не было зазора с треугольником */
-    border: 4px solid;
-    cursor:pointer;
-    text-align: left;
-  }
-
-  .cat * {
-    user-select: none; /* отключить выделение текста при нажатиях */
-  }
-
-    .cat:before { /* уголок (повернутый квадратик) */
-      content:'';
-      display:block;
-      width:60px;
-      height:60px;
-      z-index:1;
-      left:0;
-      top:0;
-      position:absolute;
-      border-radius:6px;
-      border-left:5px solid; /* если сделать 4px, то линия после поворота будет слишком тонкой... поэтому делаем толще, и поджимаем назад transform'ом */
-      transform:translate(6px, -30px) rotate(45deg) scale(0.9, 1); /* чуть-чуть сжимаем, чтобы толщина линии совпала */
-      background:white;
+    .cats input {
+        display: none; /* скрывает чекбоксы (которые мы используем для управления состоянием checked/disabled) */
     }
 
-    .cat:after { /* верхняя «крышка» плашки */
-      content: '';
-      box-sizing:border-box;
-      display:block;
-      height:42px;
-      background:white;
-      position:absolute;
-      bottom:100%;
-      right:-4px;
-      left:34px;
-      border:4px solid;
-      border-bottom:none;
-      border-top-right-radius:12px;
-      border-top-left-radius:9px;
-      padding-top:19px;
-      padding-right:51px;
+    .cat {
+        vertical-align:top;
+        display:inline-block;
+        position:relative;
+        width: 320px;
+        height: 480px; 
+        margin:40px;
+        margin-bottom:80px;
+        background-color: white;
+        background-position: -30px 210px;
+        background-repeat: no-repeat;
+        background-size:368px; /* 0.5× от 736px, для ретины */
+        background-image: url(art/kotik.png);
+        border-radius: 9px 0 12px 12px; /* верхний левый меньше, чтобы не было заусенца в месте стыка с треугольником */
+        border: 4px solid;
+        cursor:pointer;
+        text-align: left;
     }
 
-    .cat > span {
-      display:block;
-      position:relative;
-      z-index:2; /* для перекрытия квадратика уголка */
+        .cat * {
+            user-select: none; /* отключить выделение текста при нажатиях */
+        }
+
+        .cat:before { /* уголок (повернутый квадратик) */
+            content:'';
+            display:block;
+            width:60px;
+            height:60px;
+            z-index:1;
+            left:0;
+            top:0;
+            position:absolute;
+            border-radius:6px;
+            border-left:5px solid; /* если сделать 4px, то линия после поворота будет слишком тонкой... поэтому делаем толще, и поджимаем назад transform'ом */
+            transform:translate(6px, -30px) rotate(45deg) scale(0.9, 1); /* чуть-чуть сжимаем, чтобы толщина линии совпала */
+            background:white;
+        }
+
+        .cat:after { /* верхняя «крышка» плашки */
+            content: '';
+            box-sizing:border-box;
+            display:block;
+            height:42px;
+            background:white;
+            position:absolute;
+            bottom:100%;
+            right:-4px;
+            left:34px;
+            border:4px solid;
+            border-bottom:none;
+            border-top-right-radius:12px;
+            border-top-left-radius:9px;
+            padding-top:19px;
+            padding-right:51px;
+        }
+
+        .cat > span {
+            display:block;
+            position:relative;
+            z-index:2; /* для перекрытия квадратика уголка */
+        }
+
+        .cat .title:before {
+            content: 'Сказочное заморское яство';
+            color:#666666;
+            font-size:16px;
+            display:block;
+            font-weight:normal;
+            margin-top:-17px;
+            margin-bottom:10px;
+        }
+
+        .cat .title {
+
+            font-size:48px;
+            font-weight:bold;
+            margin-top:0px;
+            padding-left:45px;
+        }
+
+        .cat .subtitle {
+            font-size:24px;
+            margin-top:5px;
+            padding-left:47px;
+            text-align: left;
+            margin-bottom: 12px;
+        }
+
+        .cat .portions,
+        .cat .bonus,
+        .cat .ok {
+            padding-left:47px;
+            padding-top:6px;
+            color:#666666;
+            font-size:14px;
+        }
+
+        .cat .size {
+            width:80px;
+            height:80px;
+            color:white;
+            border-radius: 100%;
+            position:absolute;
+            z-index:10;
+            text-align:center;
+            padding-top:10px;
+            font-size:42px;
+            bottom:12px;
+            right:12px;
+        }
+
+        .cat .size:after{
+            content:'кг';
+            display:block;
+            font-size:21px;
+            line-height:18px;
+        }
+
+        .cat .footer {
+            font-size: 13px;
+            position:absolute;
+            top:100%;
+            color:white;
+            text-align:center;
+            width:100%;
+            padding-top:17px;
+        }
+
+            .cat .footer:before {
+                content:'Чего сидишь? Порадуй котэ, ';       
+            }
+
+            .cat .footer:after {
+                content:'купи.'; 
+                text-decoration:none;
+                color:#1698D9;
+                border-bottom: 1px solid #1698D9;
+                border-bottom-style: dashed;
+                display:inline-block;
+                width:2.1em; /* это чтобы подчеркивание было ДО точки! */
+            }
+
+            .cat .footer em {
+                display:none;
+                white-space:nowrap;
+            }
+
+                             .cat:hover .footer:before,
+                             .cat:hover .footer:after,
+            input:checked  ~ .cat       .footer:before,
+            input:disabled ~ .cat       .footer:before,
+            input:checked  ~ .cat       .footer:after,
+            input:disabled ~ .cat       .footer:after {
+                display:none;        
+            }
+ 
+                            .cat:hover .footer em,
+            input:checked ~ .cat       .footer em {
+                display:block;        
+            }
+
+/*  Выключенный котик   */
+
+    input:disabled ~ .cat {
+        pointer-events:none;
+        background-image:
+            linear-gradient(rgba(242,242,242,0.5),rgba(242,242,242,0.5)), /* серый полупрозрачный оверлей чтобы сделать котика «полупрозрачным» */
+            url(art/kotik.png); /* к сожалению в CSS нельзя переопределить только один из бэкграундов, поэтому приходится повторяться... */
     }
 
-    .cat .title:before {
-      content: 'Сказочное заморское яство';
-      color:#666666;
-      font-size:16px;
-      display:block;
-      font-weight:normal;
-      margin-top:-17px;
-      margin-bottom:10px;
+    input:disabled ~ .cat,
+    input:disabled ~ .cat:before,
+    input:disabled ~ .cat:after {
+        background-color:#F2F2F2;
     }
 
-    .cat .title {
-
-      font-size:48px;
-      font-weight:bold;
-      margin-top:0px;
-      padding-left:45px;
+    input:disabled ~ .cat > span:not(.size):not(.footer) {
+        color:black;
+        opacity:0.15;
     }
 
-    .cat .subtitle {
-      font-size:24px;
-      margin-top:5px;
-      padding-left:47px;
-      text-align: left;
+    input:disabled ~ .cat .footer em {
+        display: block;
+        color:#FFFF66;
     }
 
-    .cat .footer {
-      font-size: 13px;
-      position:absolute;
-      top:100%;
-      color:white;
-      text-align:center;
-      width:100%;
-      margin-top:17px;
+/*  Цвета бордеров для разных состояний кота   */
+
+    .cat,
+    .cat:before,
+    .cat:after {
+        border-color: #1698D9;
     }
 
-    .cat a {
-      text-decoration:none;
-      color:#1698D9;
-      border-bottom: 1px solid #1698D9;
-      border-bottom-style: dashed;
-
+    .cat:hover,
+    .cat:hover:before,
+    .cat:hover:after {
+        border-color: #2EA8E6;
     }
 
-  .cat,
-  .cat:before,
-  .cat:after {
-    border-color: #1698D9;
-  }
+    input:checked ~ .cat,
+    input:checked ~ .cat:before,
+    input:checked ~ .cat:after {
+        border-color: #D91667;
+    }
 
-  .cat:hover,
-  .cat:hover:before,
-  .cat:hover:after {
-    border-color: #2EA8E6;
-  }
+    input:checked ~ .cat:hover,
+    input:checked ~ .cat:hover:before,
+    input:checked ~ .cat:hover:after {
+        border-color: #E52E7A; 
+    }
 
-  .cats input:checked ~ .cat,
-  .cats input:checked ~ .cat:before,
-  .cats input:checked ~ .cat:after {
-    border-color: #D91667;
-  }
+    input:disabled ~ .cat,
+    input:disabled ~ .cat:before,
+    input:disabled ~ .cat:after {
+        border-color: #B3B3B3; 
+    }
 
-  .cats input:checked ~ .cat:hover,
-  .cats input:checked ~ .cat:hover:before,
-  .cats input:checked ~ .cat:hover:after {
-    border-color: #E52E7A;
-  }
+/*  Цвета плашек с весом для разных состояний кота   */
 
-  .cats input:checked ~ .cat:hover .title:before {
-    color: #E52E7A;
-    content: 'Котэ не одобряет?';
-  }
+    .cat .size {
+        background: #1698D9;
+    }
 
-@media screen and (max-device-width: 440px), (max-width: 440px) {
-  
-/*   .cat {
-    margin: 40px 0;
-  } */
+    .cat:hover .size {
+        background: #2EA8E6;
+    }
+
+    input:checked ~ .cat .size {
+        background: #D91667;
+    }
+
+    input:checked ~ .cat:hover .size {
+        background: #E52E7A;
+    }
+
+    input:disabled ~ .cat .size {
+        background: #B3B3B3;
+    }
+
+/*  Коте не одобряет  */
+
+    input:checked ~ .cat:hover:not(.just-clicked) .title:before {
+        color: #E52E7A;
+        content: 'Котэ не одобряет?';
+    }
+
+
+@media screen and (max-device-width: 340px), (max-width: 340px) {
+    
+    .cat { /*  Это нужно чтобы при сжатии до <= 320px, плашка котика была не на всю ширину экрана, а чуть меньше   */
+        margin-left: 0;
+        margin-right: 0;
+        width: 90%;
+    }
 }
 
 

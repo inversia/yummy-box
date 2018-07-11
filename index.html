@@ -1,39 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
-  <link rel="stylesheet" href="/fonts/Exo2.0-Thin/stylesheet.css"></link>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"></link>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunBox | Котэ Одобряет</title>
+    <link rel="stylesheet" href="index.css"></link>
+    <script>
+
+    /*  Небольшой скриптик, чтобы котэ одобрял!             */
+
+        const cats = document.querySelectorAll ('.cat')
+
+        for (let i = 0; i < cats.length; i++) {
+
+            const cat = cats[i]
+
+        /*  Класс .just-clicked означает, что мы только что нажали на кота, но курсор ещё не убрали,
+            таким образом мы можем понять, что надпись «котэ не одобряет» показывать не надо – чтобы не пугать пользователя.    */
+
+            cat.onclick      = function () { cat.classList.add    ('just-clicked') }
+            cat.onmouseleave = function () { cat.classList.remove ('just-clicked') }
+        }
+    </script>
 </head>
 <body>
-  <h1>Ты сегодня покормил кота?</h1>
-  <div class="cats">
-    <label> <!-- кладем всю плашку кота внутрь label, чтобы это было кликабельным и переключало невидимый чекбокс без нужды подключать JavaScript -->
-      <input type="checkbox" /> <!-- невидимый чекбокс, который будет переключаться и влиять на селекторы в CSS, задающие отображение плашки с котом -->
-      <span class="cat"> <!-- внутри label можно класть только inline элементы -->
-        <span class="title">Нямушка</span>
-        <span class="subtitle">с фуа-гра</span>
-        <span class="footer">Чего сидишь? Порадуй котэ, <a href="#">купи</a>.</span>
-      </span>
-    </label>
-    <label>
-      <input type="checkbox" />
-      <span class="cat">
-        <span class="title">Нямушка</span>
-        <span class="subtitle">с рыбой</span>
-        <span class="footer">Головы щучьи с чесноком, да свежайшая сёмгушка.</span>
-      </span>
-    </label>
-    <label>
-      <input type="checkbox" />
-      <span class="cat">
-        <span class="title">Нямушка</span>
-        <span class="subtitle">с курой</span>
-        <span class="footer">Печень утки разварная с артишоками.</span>
-      </span>
-    </label>
-  </div>
+    <h1>Ты сегодня покормил кота?</h1>
+    <div class="cats">
+        <label> <!-- кладем всю плашку кота внутрь label, чтобы это было кликабельным и переключало невидимый чекбокс без нужды подключать JavaScript -->
+            <input type="checkbox" /> <!-- невидимый чекбокс, который будет переключаться и влиять на селекторы в CSS, задающие отображение плашки с котом -->
+            <span class="cat"> <!-- внутри label можно класть только inline элементы -->
+                <span class="title">Нямушка</span>
+                <span class="subtitle">с фуа-гра</span>
+                <span class="portions"><strong>10</strong> порций</span>
+                <span class="bonus">мышь в подарок</span>
+                <span class="size">0,5</span>
+                <span class="footer"><em>Печень утки разварная с артишоками.</em></span>
+            </span>
+        </label>
+        <label>
+            <input type="checkbox" />
+            <span class="cat">
+                <span class="title">Нямушка</span>
+                <span class="subtitle">с рыбой</span>
+                <span class="portions"><strong>40</strong> порций</span>
+                <span class="bonus"><strong>2</strong> мыши в подарок</span>
+                <span class="size">2</span>
+                <span class="footer"><em>Головы щучьи с чесноком да свежайшая сёмгушка.</em></span>
+            </span>
+        </label>
+        <label>
+            <input type="checkbox" disabled />
+            <span class="cat">
+                <span class="title">Нямушка</span>
+                <span class="subtitle">с курой</span>
+                <span class="portions"><strong>100</strong> порций</span>
+                <span class="bonus"><strong>5</strong> мышей в подарок</span>
+                <span class="ok">заказчик доволен</span>
+                <span class="size">5</span>
+                <span class="footer"><em>Печалька, с курой закончился.</em></span>
+            </span>
+        </label>
+    </div>
 </body>
 </html>
