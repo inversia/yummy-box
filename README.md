@@ -34,6 +34,10 @@
 
 <img width="921" alt="screen shot 2018-07-11 at 19 25 42" src="https://user-images.githubusercontent.com/23237822/42586249-5bcecbaa-8540-11e8-8061-8aefac705645.png">
 
+Черный градиент на бэкграунде скроллится вместе с экраном, через before псевдоэлемент у body с `position: fixed` (для лучшей видимости подсвечен красным на скриншоте):
+
+![catz](https://user-images.githubusercontent.com/23237822/42588071-603ff98e-8545-11e8-8a55-f75f988207b1.png)
+
 Удалось добиться отображения шрифта Exo в IE11, сконвертировав его в формат TTF (в качестве дополнительного формата к OTF):
 
 ![screen shot 2018-07-11 at 19 18 46](https://user-images.githubusercontent.com/23237822/42586026-c2dbbb9c-853f-11e8-91f8-9c8178d67d18.png)
