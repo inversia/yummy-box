@@ -31,14 +31,22 @@ body {
     flex-direction: column;
     justify-content: center;
     font-family: 'Trebuchet MS', sans-serif;
-    line-height: 1;
+    line-height: 1;    
+    background-size: 70px; /* 0.5× от 140px, для ретины */
+    background-image: url(art/pattern.png);
+}
 
-/*  multiple backgrounds   */
+body:before {
+
+/*  Оверлейный градиент, который скроллится вместе со страницей.
+    Изначально предполагалось сделать это через multiple backgrounds у body, но выяснилось что на iOS не работает background-attachment:fixed,
+    поэтому пришлось делать через псевдоэлемент */
     
-    background-size: 100%, 70px; /* 0.5× от 140px, для ретины */
-    background-image: linear-gradient(rgba(0,0,0,0.5), transparent, rgba(0,0,0,0.5)), url(art/pattern.png);
-    background-repeat: no-repeat, repeat;
-    background-attachment: fixed, scroll; /*  градиент не скроллится, паттерн скроллится  */
+    background: linear-gradient(rgba(0,0,0,0.5), transparent, rgba(0,0,0,0.5));
+    position:fixed;
+    left:0; top:0; right:0; bottom:0;
+    display:block;
+    content: '';
 }
 
 h1 {
@@ -317,7 +325,7 @@ strong {
     }
 
 
-@media screen and (max-device-width: 340px), (max-width: 340px) {
+@media screen and (max-width: 340px) {
     
     .cat { /*  Это нужно чтобы при сжатии до <= 320px, плашка котика была не на всю ширину экрана, а чуть меньше   */
         margin-left: 0;
