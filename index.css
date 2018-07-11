@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Exo2.0-Thin';
     font-style: normal;
-    src: url(fonts/Exo2.0-Thin.otf);
+    src: url(fonts/Exo2.0-Thin.otf) format('opentype');
 }
 
 /*  Сброс дефолтных стилей, взято из reset.css (чтобы не подключать его отдельно)  */
