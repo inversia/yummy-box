@@ -2,18 +2,38 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>FunBox - тестовое задание</title>
-  <link rel="stylesheet" href="index.css"></link>
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <link rel="stylesheet" href="/fonts/Exo2.0-Thin/stylesheet.css"></link>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"></link>
 </head>
 <body>
-  <div class="cat fuagra">
-    <div class="top-desc">Сказочное заморское яство</div>
-  </div>
-  <div class="cat fish">
-    <div class="top-desc">Сказочное заморское яство</div>
-  </div>
-  <div class="cat chicken">
-    <div class="top-desc">Сказочное заморское яство</div>
+  <h1>Ты сегодня покормил кота?</h1>
+  <div class="cats">
+    <label> <!-- кладем всю плашку кота внутрь label, чтобы это было кликабельным и переключало невидимый чекбокс без нужды подключать JavaScript -->
+      <input type="checkbox" /> <!-- невидимый чекбокс, который будет переключаться и влиять на селекторы в CSS, задающие отображение плашки с котом -->
+      <span class="cat"> <!-- внутри label можно класть только inline элементы -->
+        <span class="title">Нямушка</span>
+        <span class="subtitle">с фуа-гра</span>
+        <span class="footer">Чего сидишь? Порадуй котэ, <a href="#">купи</a>.</span>
+      </span>
+    </label>
+    <label>
+      <input type="checkbox" />
+      <span class="cat">
+        <span class="title">Нямушка</span>
+        <span class="subtitle">с рыбой</span>
+        <span class="footer">Головы щучьи с чесноком, да свежайшая сёмгушка.</span>
+      </span>
+    </label>
+    <label>
+      <input type="checkbox" />
+      <span class="cat">
+        <span class="title">Нямушка</span>
+        <span class="subtitle">с курой</span>
+        <span class="footer">Печень утки разварная с артишоками.</span>
+      </span>
+    </label>
   </div>
 </body>
 </html>
