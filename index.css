@@ -213,7 +213,7 @@ strong {
 
             .cat .footer em {
                 display:none;
-                white-space:nowrap;
+                letter-spacing:-0.05px; /* чтобы надпись влезала по ширине без переносов (но переносы не отключаем, т.к. при ширине экрана в 320px они нужны) */
             }
 
                              .cat:hover .footer:before,

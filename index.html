@@ -6,21 +6,23 @@
     <title>FunBox | Котэ Одобряет</title>
     <link rel="stylesheet" href="index.css"></link>
     <script>
+        document.addEventListener ('DOMContentLoaded', function () {
 
-    /*  Небольшой скриптик, чтобы котэ одобрял!             */
+        /*  Небольшой скриптик, чтобы котэ одобрял!             */
 
-        const cats = document.querySelectorAll ('.cat')
+            const cats = document.querySelectorAll ('.cat')
 
-        for (let i = 0; i < cats.length; i++) {
+            for (let i = 0; i < cats.length; i++) {
 
-            const cat = cats[i]
+                const cat = cats[i]
 
-        /*  Класс .just-clicked означает, что мы только что нажали на кота, но курсор ещё не убрали,
-            таким образом мы можем понять, что надпись «котэ не одобряет» показывать не надо – чтобы не пугать пользователя.    */
+            /*  Класс .just-clicked означает, что мы только что нажали на кота, но курсор ещё не убрали,
+                таким образом мы можем понять, что надпись «котэ не одобряет» показывать не надо – чтобы не пугать пользователя.    */
 
-            cat.onclick      = function () { cat.classList.add    ('just-clicked') }
-            cat.onmouseleave = function () { cat.classList.remove ('just-clicked') }
-        }
+                cat.onclick      = function () { cat.classList.add    ('just-clicked') }
+                cat.onmouseleave = function () { cat.classList.remove ('just-clicked') }
+            }
+        })
     </script>
 </head>
 <body>
