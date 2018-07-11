@@ -2,7 +2,7 @@
 
 Тестовое задание для FunBox. Всё сделано на чистом голом CSS, без использования фреймворков.
 
-Смотреть: http://inversia.github.io/funbox-test
+Смотреть: https://inversia.github.io/funbox-test
 
 # Примечания
 
