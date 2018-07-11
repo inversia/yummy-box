@@ -59,7 +59,6 @@ h1 {
     padding:30px 30px 0 30px;
     line-height:1.2em;
     width:100%;
-    user-select: none;
 }
 
 strong {
@@ -69,6 +68,7 @@ strong {
 .cats {
     text-align:center;
     width:100%;
+    -webkit-user-select: none;
     user-select:none;
     padding-bottom: 25px; /* чтобы уравновесить h1 сверху, для выравнивания блока с котами ровно по центру экрана */
 }
@@ -95,10 +95,6 @@ strong {
         cursor:pointer;
         text-align: left;
     }
-
-        .cat * {
-            user-select: none; /* отключить выделение текста при нажатиях */
-        }
 
         .cat:before { /* уголок (повернутый квадратик) */
             content:'';
